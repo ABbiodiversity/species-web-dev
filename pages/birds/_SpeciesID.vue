@@ -80,13 +80,17 @@
     </div>
   </div>
 
-    <div v-if="data.map">
-      <h2 class="subtitle is-size-4">Relative abundance maps</h2>
+  <div v-if="data.map">
+    <h2 class="subtitle is-size-4">Relative abundance maps</h2>
+    <div class="columns">
+      <div class="column is-two-thirds">
         <figure class="image">
           <img id="det" 
             v-bind:src="'http://sc-dev.abmi.ca/reports/2018/images/' + group + '/' + data.SpeciesID + '-map.png'"
             alt="Relative abundance maps" />
         </figure>
+      </div>
+    </div>
   </div>
 
   <div v-if="data['sector-north']">
