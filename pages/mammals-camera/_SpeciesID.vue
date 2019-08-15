@@ -50,7 +50,7 @@
       </figure>
     </div>
     <div v-if="data['coef-north-summer']">
-      <h3 class="subtitle is-size-5">Winter</h3>
+      <h3 class="subtitle is-size-5">Summer</h3>
       <figure class="image">
         <img  
           v-bind:src="'http://sc-dev.abmi.ca/reports/2018/images/' + group + '/coef-north-summer/' + data.SpeciesID + '.png'"
