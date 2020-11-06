@@ -1,9 +1,9 @@
 {
   "name": "scdev",
-  "version": "0.0.1",
-  "description": "ABMI species and habitat elements",
-  "productName": "Development Species Website",
-  "author": "Peter Solymos <solymos@ualberta.ca>",
+  "version": "0.2020.1",
+  "description": "Species website by ABMI/SC",
+  "productName": "Dev Species Web",
+  "author": "Peter Solymos <psolymos@gmail.com>",
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",

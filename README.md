@@ -1,6 +1,6 @@
-# Development Species Website (scdev)
+# Dev Species Web (scdev)
 
-ABMI species and habitat elements
+Species website by ABMI/SC
 
 ## Install the dependencies
 ```bash

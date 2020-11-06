@@ -116,9 +116,9 @@ module.exports = function (/* ctx */) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: 'Development Species Website',
-        short_name: 'Development Species Website',
-        description: 'ABMI species and habitat elements',
+        name: 'Dev Species Web',
+        short_name: 'Dev Species Web',
+        description: 'Species website by ABMI/SC',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
