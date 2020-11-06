@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="hHh lpR lff">
     <q-header elevated>
       <q-toolbar>
         <q-btn
@@ -10,12 +10,14 @@
           aria-label="Menu"
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
-
+        <q-avatar square>
+          <img src="~assets/logo.png">
+        </q-avatar>
         <q-toolbar-title>
-          Quasar App
+          Species Website (Development)
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div>Version 2020</div>
       </q-toolbar>
     </q-header>
 
@@ -26,11 +28,8 @@
       content-class="bg-grey-1"
     >
       <q-list>
-        <q-item-label
-          header
-          class="text-grey-8"
-        >
-          Essential Links
+        <q-item-label header class="text-grey-8">
+          Navigation
         </q-item-label>
         <EssentialLink
           v-for="link in essentialLinks"
@@ -43,6 +42,11 @@
     <q-page-container>
       <router-view />
     </q-page-container>
+
+    <q-footer bordered class="bg-grey-2 text-primary">
+      <div class="q-pa-md">&copy; 2020 <a href="https://abmi.ca" target=_blank>Alberta Biodiversity Monitoring Institute</a><nbsp/>&mdash;<nbsp/><a href="http://creativecommons.org/licenses/by/4.0/" target=_blank>Creative Commons Attribution 4.0 International License</a></div>
+    </q-footer>
+
   </q-layout>
 </template>
 
@@ -51,46 +55,52 @@ import EssentialLink from 'components/EssentialLink.vue'
 
 const linksData = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
+    title: 'Home',
+    caption: '',
+    icon: 'home',
+    link: '/'
   },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
+    title: 'Lichens',
+    caption: 'Fungi + algae things',
+    icon: 'layers',
+    link: '/lichens'
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
+    title: 'Bryophytes',
+    caption: 'Mosses, almost plants',
+    icon: 'grass',
+    link: '/mosses'
   },
   {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
+    title: 'Vascular plants',
+    caption: 'Equipped with xylem and phloem',
+    icon: 'local_florist',
+    link: '/vplants'
   },
   {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
+    title: 'Soil mites',
+    caption: 'Most legs ever',
+    icon: 'bug_report',
+    link: '/mites'
   },
   {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
+    title: 'Birds',
+    caption: 'Your feathered friends',
+    icon: 'radio_button_unchecked',
+    link: '/birds'
   },
   {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
+    title: 'Mammals',
+    caption: 'Those furry relatives',
+    icon: 'pest_control_rodent',
+    link: '/mammals'
+  },
+  {
+    title: 'Habitat elements',
+    caption: 'Things that trip you up',
+    icon: 'eco',
+    link: '/habitats'
   }
 ]
 
