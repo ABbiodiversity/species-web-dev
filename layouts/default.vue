@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app>
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant="miniVariant"
@@ -27,6 +27,8 @@
     <v-app-bar
       :clipped-left="clipped"
       fixed
+      dark
+      color="#4C515A"
       app
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
@@ -42,75 +44,100 @@
       >
         <v-icon>mdi-application</v-icon>
       </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
+      <v-img src="/abmi-logo.png" max-height="40" max-width="40" contain alt="ABMI Logo"></v-img>
       <v-toolbar-title v-text="title" />
-      <v-spacer />
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
     </v-app-bar>
     <v-main>
       <v-container>
         <nuxt />
       </v-container>
     </v-main>
-    <v-navigation-drawer
-      v-model="rightDrawer"
-      :right="right"
-      temporary
-      fixed
-    >
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
     <v-footer
-      :absolute="!fixed"
+      absolute
       app
     >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+      <span>
+        <small>
+        &copy; {{ new Date().getFullYear() }}
+        <a
+          href="https://www/abmi.ca"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="ABMI Website"
+        >
+           Alberta Biodiversity Monitoring Institute
+        </a>
+        &mdash;
+        <a
+          href="http://creativecommons.org/licenses/by/4.0/"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Creative Commons License"
+        >
+           Creative Commons Attribution 4.0 International License
+        </a>
+        </small>
+      </span>
     </v-footer>
   </v-app>
 </template>
-
+<style>
+.v-card__text, .v-card__title {
+  word-break: normal; /* maybe !important  */
+}
+</style>
 <script>
 export default {
   data () {
     return {
-      clipped: false,
-      drawer: false,
+      title: 'ABMI SC Dev',
+      miniVariant: false,
+      right: false,
+      clipped: true,
+      drawer: true,
       fixed: false,
       items: [
         {
-          icon: 'mdi-apps',
-          title: 'Welcome',
+          icon: 'mdi-home',
+          title: 'Home',
           to: '/'
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
+          icon: 'mdi-layers',
+          title: 'Lichens',
+          to: '/lichens'
+        },
+        {
+          icon: 'mdi-grass',
+          title: 'Bryophytes',
+          to: '/mosses'
+        },
+        {
+          icon: 'mdi-flower',
+          title: 'Plants',
+          to: '/vplants'
+        },
+        {
+          icon: 'mdi-bug',
+          title: 'Mites',
+          to: '/mites'
+        },
+        {
+          icon: 'mdi-bird',
+          title: 'Birds',
+          to: '/birds'
+        },
+        {
+          icon: 'mdi-cat',
+          title: 'Mammals',
+          to: '/mammals'
+        },
+        {
+          icon: 'mdi-pine-tree',
+          title: 'Habitats',
+          to: '/habitats'
+        },
+      ]
     }
   }
 }

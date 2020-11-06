@@ -59,7 +59,7 @@ export default {
     theme: {
       dark: false,
       themes: {
-        dark: {
+        light: {
           primary: '#4C515A',
           accent: '#A3AA83',
           secondary: '#949A90',
