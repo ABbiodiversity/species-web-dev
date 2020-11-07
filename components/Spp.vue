@@ -1,5 +1,18 @@
 <template>
-  <div>
+<div>
+    <v-btn
+            v-scroll="onScroll"
+            v-show="fab"
+            fab
+            dark
+            fixed
+            bottom
+            right
+            color="primary"
+            @click="toTop"
+          >
+            <v-icon>mdi-chevron-up</v-icon>
+    </v-btn>
     <v-row>
       <v-col class="text-center">
         <div class="text-h4">{{ blob.display }}</div>
@@ -16,19 +29,22 @@
               color="secondary"
               v-bind="attrs"
               v-on="on"
+              :href="`/${blob.taxonid}/${blob.idprev}/`"
             >
-              <a :href="`/${blob.taxonid}/${blob.idprev}/`"><v-icon>mdi-arrow-left</v-icon></a>
+              <v-icon>mdi-chevron-left</v-icon>
             </v-btn>
           </template>
           <span>Previous</span>
         </v-tooltip>
       </v-col>
       <v-col class="text-center">
-        <a :href="`/${blob.taxonid}/`">
-          <v-btn text>
-            {{ blob.taxonname }}
-          </v-btn>
-        </a>
+        <v-btn
+          text
+          :href="`/${blob.taxonid}/`"
+          color="secondary"
+        >
+          {{ blob.taxonname }}
+        </v-btn>
       </v-col>
       <v-col class="text-right">
         <v-tooltip bottom>
@@ -40,8 +56,9 @@
               color="secondary"
               v-bind="attrs"
               v-on="on"
+              :href="`/${blob.taxonid}/${blob.idnext}/`"
             >
-              <a :href="`/${blob.taxonid}/${blob.idnext}/`"><v-icon>mdi-arrow-right</v-icon></a>
+              <v-icon>mdi-chevron-right</v-icon>
             </v-btn>
           </template>
           <span>Next</span>
@@ -49,7 +66,11 @@
       </v-col>
     </v-row>
 
-    <div v-if="blob.det">
+    <!-- this is always true -->
+    <!-- <div v-if="blob.det">  -->
+    <v-row>
+    <v-col cols="8">
+
       <v-row class="ma-4">
         <v-col>
           <div class="text-h5" id="det">Detection map</div>
@@ -61,11 +82,101 @@
             :src="`https://science.abmi.ca/results/reports/2020/images/${blob.taxonid}/${blob.id}/det.png`"
             alt="Detection map"
             contain
-            width="33%">
+            width="50%">
           </v-img>
         </v-col>
       </v-row>
-    </div>
+
+    </v-col>
+    <v-col>
+
+  <v-card
+    class="mx-auto"
+    max-width="300"
+    tile
+  >
+    <v-list>
+      <v-subheader>TABLE OF CONTENTS</v-subheader>
+      <v-list-item-group
+        color="accent"
+      >
+
+        <v-list-item href="#det">
+          <v-list-item-icon><v-icon>mdi-chart-bubble</v-icon></v-list-item-icon>
+          <v-list-item-content><v-list-item-title>
+            Detections
+          </v-list-item-title></v-list-item-content>
+        </v-list-item>
+
+        <div v-if="blob.useavailnorth">
+        <v-list-item href="#useavailnorth">
+          <v-list-item-icon><v-icon>mdi-pine-tree-fire</v-icon></v-list-item-icon>
+          <v-list-item-content><v-list-item-title>
+            North
+          </v-list-item-title></v-list-item-content>
+        </v-list-item>
+        </div>
+        <div v-if="blob.coefnorth">
+        <v-list-item href="#coefnorth">
+          <v-list-item-icon><v-icon>mdi-pine-tree-fire</v-icon></v-list-item-icon>
+          <v-list-item-content><v-list-item-title>
+            North
+          </v-list-item-title></v-list-item-content>
+        </v-list-item>
+        </div>
+
+        <div v-if="blob.useavailsouth">
+        <v-list-item href="#useavailsouth">
+          <v-list-item-icon><v-icon>mdi-tractor</v-icon></v-list-item-icon>
+          <v-list-item-content><v-list-item-title>
+            South
+          </v-list-item-title></v-list-item-content>
+        </v-list-item>
+        </div>
+        <div v-if="blob.coefsouth">
+        <v-list-item href="#coefsouth">
+          <v-list-item-icon><v-icon>mdi-tractor</v-icon></v-list-item-icon>
+          <v-list-item-content><v-list-item-title>
+            South
+          </v-list-item-title></v-list-item-content>
+        </v-list-item>
+        </div>
+
+        <div v-if="blob.sectornorth">
+        <v-list-item href="#sectornorth">
+          <v-list-item-icon><v-icon>mdi-factory</v-icon></v-list-item-icon>
+          <v-list-item-content><v-list-item-title>
+            Sectors
+          </v-list-item-title></v-list-item-content>
+        </v-list-item>
+        </div>
+        <div v-if="!blob.sectornorth && blob.sectorsouth">
+        <v-list-item href="#sectorsouth">
+          <v-list-item-icon><v-icon>mdi-factory</v-icon></v-list-item-icon>
+          <v-list-item-content><v-list-item-title>
+            Sectors
+          </v-list-item-title></v-list-item-content>
+        </v-list-item>
+        </div>
+
+        <div v-if="blob.map">
+        <v-list-item href="#map">
+          <v-list-item-icon><v-icon>mdi-chart-sankey</v-icon></v-list-item-icon>
+          <v-list-item-content><v-list-item-title>
+            Predictions
+          </v-list-item-title></v-list-item-content>
+        </v-list-item>
+        </div>
+
+      </v-list-item-group>
+    </v-list>
+  </v-card>
+
+    </v-col>
+    </v-row>
+
+
+    <!-- </div> -->
 
     <div v-if="blob.useavailnorth">
       <v-row class="ma-4">
@@ -186,7 +297,7 @@
     <div v-if="blob.map">
       <v-row class="ma-4">
         <v-col>
-          <div class="text-h5" id="det">Predictive map</div>
+          <div class="text-h5" id="map">Predictive map</div>
         </v-col>
       </v-row>
       <v-row class="ma-4">
@@ -211,14 +322,24 @@
       </div>
     </div>
 
-
-
-
-  </div>
+</div>
 </template>
 <script>
 export default {
   name: 'Spp',
-  props: ['blob']
+  props: ['blob'],
+  data: () => ({
+    fab: false
+  }),
+  methods: {
+    onScroll (e) {
+      if (typeof window === 'undefined') return
+      const top = window.pageYOffset ||   e.target.scrollTop || 0
+      this.fab = top > 20
+    },
+    toTop () {
+      this.$vuetify.goTo(0)
+    }
+  }
 }
 </script>
