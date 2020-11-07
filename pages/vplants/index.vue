@@ -1,42 +1,25 @@
 <template>
-  <div>
-    <h1 class="title">{{ title }}</h1>
-    <ul>
-      <li v-for="spp in blob">
-        <a v-bind:href="'/' + group + '/'+ spp.SpeciesID">{{ spp.DisplayName }}</a>
-        </li>
-    </ul>
-  </div>
+  <toc :blob="blob"></toc>
 </template>
 <script>
-const group = 'vplants'
-const Group = 'Vascular Plants'
-import axios from 'axios'
-
+const taxon = 'vplants'
 export default {
-
-  data () {
-    return {
-      title: 'Species Results for ' + Group,
-      group: group
-    }
-  },
   head () {
     return {
-      title: this.title,
+      title: this.blob.name
     }
   },
-  asyncData () {
-    return axios.get(`http://sc-dev.abmi.ca/reports/2018/api/${group}/index.json`)
-    .then((res) => {
-      return { 
-        blob: res.data
-      }
-    })
-    .catch((e) => {
-      error({ statusCode: 404, message: 'Data not found' })
-    })
+  data () {
+    return {
+      blob: {}
+    }
+  },
+  mounted () {
+    this.$axios
+      .get('https://science.abmi.ca/results/reports/2020/images/' + taxon + '/index.json')
+      .then((response) => {
+        this.blob = response.data
+      })
   }
-
 }
 </script>

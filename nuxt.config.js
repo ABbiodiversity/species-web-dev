@@ -1,104 +1,92 @@
-import pkg from './package'
+import colors from 'vuetify/es5/util/colors'
 import axios from 'axios'
 
 export default {
-  mode: 'universal',
+  // Target (https://go.nuxtjs.dev/config-target)
+  target: 'static',
 
-  /*
-   ** Headers of the page
-   */
-  head: {
-    title: pkg.name,
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
-    ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
-  },
-
-  /*
-   ** Customize where to put static content when serving from GitHub
-   ** and generate dynamic routes
-   */
-  generate: { 
-    //dir: 'docs', 
+  generate: {
     routes: function () {
-      return axios.get(`http://sc-dev.abmi.ca/reports/2018/api/index.json`)
-      .then((res) => {
-        return res.data.map((species) => {
+      return axios.get(`https://science.abmi.ca/results/reports/2020/images/index.json`)
+      .then((response) => {
+        return response.data.species.map((species) => {
           return {
-            route: '/' + species.Group + '/' + species.SpeciesID
+            route: '/' + species.taxonid + '/' + species.id + '/'
           }
         })
       })
-    }
+    }     
   },
 
-  /*
-   ** Customize the progress-bar color
-   */
-  loading: { color: '#fff' },
+  // Global page headers (https://go.nuxtjs.dev/config-head)
+  head: {
+    titleTemplate: '%s - SC dev',
+    title: 'ABMI SC dev',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: '' }
+    ],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ]
+  },
 
-  /*
-   ** Global CSS
-   */
+  // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
-    '@/assets/main.css'
   ],
 
-  /*
-   ** Plugins to load before mounting the App
-   */
-  plugins: [],
+  // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
+  plugins: [
+  ],
 
-  /*
-   ** Nuxt.js modules
-   */
+  // Auto import components (https://go.nuxtjs.dev/config-components)
+  components: true,
+
+  // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
+  buildModules: [
+    // https://go.nuxtjs.dev/vuetify
+    '@nuxtjs/vuetify',
+  ],
+
+  // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
+    // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    // Doc:https://github.com/nuxt-community/modules/tree/master/packages/bulma
-    '@nuxtjs/bulma'
   ],
-  
-  /*
-   ** Axios module configuration
-   */
-  axios: {
-    // See https://github.com/nuxt-community/axios-module#options
-  },
 
-  // set `router.base = '/<repository-name>/'` if `DEPLOY_ENV` is `GH_PAGES`
-  router: {
-    base: process.env.DEPLOY_ENV === 'GH_PAGES' ? '/results/' : '/'
-  },
+  // Axios module configuration (https://go.nuxtjs.dev/config-axios)
+  axios: {},
 
-  /*
-   ** Build configuration
-   */
-  build: {
-    postcss: {
-      preset: {
-        features: {
-          customProperties: false
+  // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
+  // icons: mdi, md, fa, fa4
+  vuetify: {
+    treeShake: true,
+    customVariables: ['~/assets/variables.scss'],
+    defaultAssets: {
+      font: {
+        family: 'Montserrat',
+        size: 16
+      },
+      icons: 'mdi'
+    },
+    theme: {
+      dark: false,
+      themes: {
+        light: {
+          primary: '#4C515A',
+          accent: '#A3AA83',
+          secondary: '#949A90',
+          info: colors.teal.lighten1,
+          warning: colors.amber.base,
+          error: colors.deepOrange.accent4,
+          success: colors.green.accent3
         }
       }
-    },
-
-    /*
-    ** You can extend webpack config here
-    */
-    extend(config, ctx) {
-      // Run ESLint on save
-      if (ctx.isDev && ctx.isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
-      }
     }
+  },
+
+  // Build Configuration (https://go.nuxtjs.dev/config-build)
+  build: {
   }
 }

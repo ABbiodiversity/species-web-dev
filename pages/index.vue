@@ -1,33 +1,28 @@
 <template>
-  <div>
-    <h1 class="title">{{ title }}</h1>
-    <p>This is the development version of the species website by the ABMI Science Centre.</p>
-    <ul>
-      <li><a href="/mammals-camera/">Mammals (Camera)</a></li>
-      <li><a href="/birds/">Birds</a></li>
-      <li><a href="/mites/">Mites</a></li>
-      <li><a href="/vplants/">Vascular Plants</a></li>
-      <li><a href="/mosses/">Mosses</a></li>
-      <li><a href="/lichens/">Lichens</a></li>
-    </ul>
-  </div>
+  <v-row justify="center" align="center">
+    <v-col cols="12" sm="8" md="6">
+      <v-card>
+        <v-card-title class="headline">
+          Welcome to the ABMI Science Centre development website!
+        </v-card-title>
+        <v-card-text>
+          <p>Check the results and provide feedback.</p>
+          <p>
+            For previous versions, check out the <a
+              href="https://www.abmi.ca/data"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ABMI Data Portal
+            </a>.
+          </p>
+        </v-card-text>
+      </v-card>
+    </v-col>
+  </v-row>
 </template>
+
 <script>
-import axios from 'axios'
-const group = 'birds';
-
 export default {
-
-  data () {
-    return {
-      title: 'Species Results'
-    }
-  },
-  head () {
-    return {
-      title: this.title,
-    }
-  }
-
 }
 </script>
