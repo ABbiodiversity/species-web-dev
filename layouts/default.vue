@@ -2,8 +2,7 @@
   <v-app>
     <v-navigation-drawer
       v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
+      clipped
       fixed
       app
     >
@@ -25,25 +24,11 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar
-      :clipped-left="clipped"
-      fixed
       dark
       color="#4C515A"
       app
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
       <v-img src="/abmi-logo.png" max-height="40" max-width="40" contain alt="ABMI Logo"></v-img>
       <v-toolbar-title v-text="title" />
     </v-app-bar>
@@ -91,11 +76,7 @@ export default {
   data () {
     return {
       title: 'ABMI SC Dev',
-      miniVariant: false,
-      right: false,
-      clipped: true,
-      drawer: true,
-      fixed: false,
+      drawer: false,
       items: [
         {
           icon: 'mdi-home',
