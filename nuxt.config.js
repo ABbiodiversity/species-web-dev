@@ -52,7 +52,7 @@ export default {
     defaultAssets: {
       font: {
         family: 'Montserrat',
-        size: 20
+        size: 16
       },
       icons: 'mdi'
     },

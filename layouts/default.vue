@@ -46,6 +46,19 @@
       </v-btn>
       <v-img src="/abmi-logo.png" max-height="40" max-width="40" contain alt="ABMI Logo"></v-img>
       <v-toolbar-title v-text="title" />
+      <!-- <v-spacer></v-spacer>
+      <v-autocomplete
+        v-model="speciespicked"
+        :items="specieslist"
+        clearable
+        filled
+        rounded
+        dense
+        item-text="Species"
+        placeholder="Start typing to Search"
+        prepend-inner-icon="mdi-magnify"
+        return-object
+      ></v-autocomplete> -->
     </v-app-bar>
     <v-main>
       <v-container>
@@ -105,39 +118,41 @@ export default {
         {
           icon: 'mdi-layers',
           title: 'Lichens',
-          to: '/lichens'
+          to: '/lichens/'
         },
         {
           icon: 'mdi-grass',
           title: 'Bryophytes',
-          to: '/mosses'
+          to: '/mosses/'
         },
         {
           icon: 'mdi-flower',
           title: 'Plants',
-          to: '/vplants'
+          to: '/vplants/'
         },
         {
           icon: 'mdi-bug',
           title: 'Mites',
-          to: '/mites'
+          to: '/mites/'
         },
         {
           icon: 'mdi-bird',
           title: 'Birds',
-          to: '/birds'
+          to: '/birds/'
         },
         {
           icon: 'mdi-cat',
           title: 'Mammals',
-          to: '/mammals'
+          to: '/mammals/'
         },
         {
           icon: 'mdi-pine-tree',
           title: 'Habitats',
-          to: '/habitats'
+          to: '/habitats/'
         },
-      ]
+      ]//,
+      //specieslist: ['Ax', 'Bus'],
+      //speciespicked: ''
     }
   }
 }

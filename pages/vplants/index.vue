@@ -2,7 +2,7 @@
   <toc :blob="blob"></toc>
 </template>
 <script>
-const taxon = 'mites'
+const taxon = 'vplants'
 export default {
   head () {
     return {
