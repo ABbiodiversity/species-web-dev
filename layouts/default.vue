@@ -1,73 +1,125 @@
 <template>
-<div>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="https://abmi.ca">
-        <img src="~/static/abmi-logo-grey.png" alt="ABMI">
-      </a>
-      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-
-    <div id="navbar" class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item">
-          <nuxt-link to="/">Species Website</nuxt-link>
+  <v-app>
+    <v-navigation-drawer
+      v-model="drawer"
+      clipped
+      fixed
+      app
+    >
+      <v-list>
+        <v-list-item
+          v-for="(item, i) in items"
+          :key="i"
+          :to="item.to"
+          router
+          exact
+        >
+          <v-list-item-action>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title v-text="item.title" />
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <v-app-bar
+      dark
+      color="#4C515A"
+      app
+    >
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <v-img src="/abmi-logo.png" max-height="40" max-width="40" contain alt="ABMI Logo"></v-img>
+      <v-toolbar-title v-text="title" />
+    </v-app-bar>
+    <v-main>
+      <v-container>
+        <nuxt />
+      </v-container>
+    </v-main>
+    <v-footer
+      absolute
+      app
+    >
+      <span>
+        <small>
+        &copy; {{ new Date().getFullYear() }}
+        <a
+          href="https://www/abmi.ca"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="ABMI Website"
+        >
+           Alberta Biodiversity Monitoring Institute
         </a>
-
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            Species
-          </a>
-          <div class="navbar-dropdown">
-            <a class="navbar-item">
-              <a href="/mammals-camera/">Mammals (Camera)</a>
-            </a>
-            <a class="navbar-item">
-              <a href="/birds/">Birds</a>
-            </a>
-            <a class="navbar-item">
-              <a href="/mites/">Mites</a>
-            </a>
-            <a class="navbar-item">
-              <a href="/vplants/">Vascular Plants</a>
-            </a>
-            <a class="navbar-item">
-              <a href="/mosses/">Mosses</a>
-            </a>
-            <a class="navbar-item">
-              <a href="/lichens/">Lichens</a>
-            </a>
-          </div>
-        </div>
-        
-      </div>
-    </div>
-
-  </nav>
-
-  <section>
-    <div class="container">
-      <div class="columns">
-        <div class="column is-10 is-offset-1">        
-          <nuxt />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="content has-text-centered">
-        <p id="footer">
-          &copy; <a href="http://www.abmi.ca/" target=_blank>Alberta Biodiversity Monitoring Institute</a> 
-          (2014&ndash;2019) under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target=_blank>CC BY-SA 4.0</a> license.          
-        </p>
-      </div>
-    </div>
-  </footer>
-</div>
+        &mdash;
+        <a
+          href="http://creativecommons.org/licenses/by/4.0/"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Creative Commons License"
+        >
+           Creative Commons Attribution 4.0 International License
+        </a>
+        </small>
+      </span>
+    </v-footer>
+  </v-app>
 </template>
+<style>
+.v-card__text, .v-card__title {
+  word-break: normal; /* maybe !important  */
+}
+</style>
+<script>
+export default {
+  data () {
+    return {
+      title: 'ABMI SC Dev',
+      drawer: false,
+      items: [
+        {
+          icon: 'mdi-home',
+          title: 'Home',
+          to: '/'
+        },
+        {
+          icon: 'mdi-layers',
+          title: 'Lichens',
+          to: '/lichens/'
+        },
+        {
+          icon: 'mdi-grass',
+          title: 'Bryophytes',
+          to: '/mosses/'
+        },
+        {
+          icon: 'mdi-flower',
+          title: 'Plants',
+          to: '/vplants/'
+        },
+        {
+          icon: 'mdi-bug',
+          title: 'Mites',
+          to: '/mites/'
+        },
+        {
+          icon: 'mdi-bird',
+          title: 'Birds',
+          to: '/birds/'
+        },
+        {
+          icon: 'mdi-cat',
+          title: 'Mammals',
+          to: '/mammals/'
+        },
+        {
+          icon: 'mdi-pine-tree',
+          title: 'Habitats',
+          to: '/habitats/'
+        },
+      ]
+    }
+  }
+}
+</script>
