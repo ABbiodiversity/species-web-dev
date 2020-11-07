@@ -82,7 +82,22 @@
             :src="`https://science.abmi.ca/results/reports/2020/images/${blob.taxonid}/${blob.id}/det.png`"
             alt="Detection map"
             contain
-            width="50%">
+            position="left center"
+            max-height="500px"
+            lazy-src="/logo-loading.png"
+          >
+            <template v-slot:placeholder>
+              <v-row
+                class="fill-height ma-0"
+                align="center"
+                justify="center"
+              >
+                <v-progress-circular
+                  indeterminate
+                  color="primary"
+                ></v-progress-circular>
+              </v-row>
+            </template>
           </v-img>
         </v-col>
       </v-row>
@@ -197,7 +212,20 @@
             :src="`https://science.abmi.ca/results/reports/2020/images/${blob.taxonid}/${blob.id}/useavail-north.png`"
             alt="Use-availability, north"
             contain
+            lazy-src="/logo-loading.png"
             width="50%">
+            <template v-slot:placeholder>
+              <v-row
+                class="fill-height ma-0"
+                align="center"
+                justify="center"
+              >
+                <v-progress-circular
+                  indeterminate
+                  color="primary"
+                ></v-progress-circular>
+              </v-row>
+            </template>
           </v-img>
         </v-col>
       </v-row>
@@ -214,7 +242,20 @@
           <v-img
             :src="`https://science.abmi.ca/results/reports/2020/images/${blob.taxonid}/${blob.id}/coef-north.png`"
             alt="Land cover associations, north"
+            lazy-src="/logo-loading.png"
             contain>
+            <template v-slot:placeholder>
+              <v-row
+                class="fill-height ma-0"
+                align="center"
+                justify="center"
+              >
+                <v-progress-circular
+                  indeterminate
+                  color="primary"
+                ></v-progress-circular>
+              </v-row>
+            </template>
           </v-img>
         </v-col>
       </v-row>
@@ -231,8 +272,21 @@
           <v-img
             :src="`https://science.abmi.ca/results/reports/2020/images/${blob.taxonid}/${blob.id}/useavail-south.png`"
             alt="Use-availability, south"
+            lazy-src="/logo-loading.png"
             contain
             width="50%">
+            <template v-slot:placeholder>
+              <v-row
+                class="fill-height ma-0"
+                align="center"
+                justify="center"
+              >
+                <v-progress-circular
+                  indeterminate
+                  color="primary"
+                ></v-progress-circular>
+              </v-row>
+            </template>
           </v-img>
         </v-col>
       </v-row>
@@ -249,7 +303,20 @@
             <v-img
               :src="`https://science.abmi.ca/results/reports/2020/images/${blob.taxonid}/${blob.id}/coef-south.png`"
               alt="Land cover associations, south"
+              lazy-src="/logo-loading.png"
               contain>
+              <template v-slot:placeholder>
+                <v-row
+                  class="fill-height ma-0"
+                  align="center"
+                  justify="center"
+                >
+                  <v-progress-circular
+                    indeterminate
+                    color="primary"
+                  ></v-progress-circular>
+                </v-row>
+              </template>
             </v-img>
         </v-col>
       </v-row>
@@ -259,8 +326,21 @@
               <v-img
                 :src="`https://science.abmi.ca/results/reports/2020/images/${blob.taxonid}/${blob.id}/soilhf2.png`"
                 alt="Land cover associations, south"
+                lazy-src="/logo-loading.png"
                 contain
                 width="50%">
+                <template v-slot:placeholder>
+                  <v-row
+                    class="fill-height ma-0"
+                    align="center"
+                    justify="center"
+                  >
+                    <v-progress-circular
+                      indeterminate
+                      color="primary"
+                    ></v-progress-circular>
+                  </v-row>
+                </template>
               </v-img>
           </v-col>
         </v-row>
@@ -278,7 +358,20 @@
           <v-img
             :src="`https://science.abmi.ca/results/reports/2020/images/${blob.taxonid}/${blob.id}/sector-north.png`"
             alt="Sector effects, north"
+            lazy-src="/logo-loading.png"
             contain>
+            <template v-slot:placeholder>
+              <v-row
+                class="fill-height ma-0"
+                align="center"
+                justify="center"
+              >
+                <v-progress-circular
+                  indeterminate
+                  color="primary"
+                ></v-progress-circular>
+              </v-row>
+            </template>
           </v-img>
         </v-col>
       </v-row>
@@ -295,7 +388,20 @@
           <v-img
             :src="`https://science.abmi.ca/results/reports/2020/images/${blob.taxonid}/${blob.id}/sector-south.png`"
             alt="Sector effects, south"
+            lazy-src="/logo-loading.png"
             contain>
+            <template v-slot:placeholder>
+              <v-row
+                class="fill-height ma-0"
+                align="center"
+                justify="center"
+              >
+                <v-progress-circular
+                  indeterminate
+                  color="primary"
+                ></v-progress-circular>
+              </v-row>
+            </template>
           </v-img>
         </v-col>
       </v-row>
@@ -315,7 +421,20 @@
           <v-img
             :src="`https://science.abmi.ca/results/reports/2020/images/${blob.taxonid}/${blob.id}/map.png`"
             alt="Detection map"
+            lazy-src="/logo-loading.png"
             contain>
+            <template v-slot:placeholder>
+              <v-row
+                class="fill-height ma-0"
+                align="center"
+                justify="center"
+              >
+                <v-progress-circular
+                  indeterminate
+                  color="primary"
+                ></v-progress-circular>
+              </v-row>
+            </template>
           </v-img>
         </v-col>
       </v-row>
@@ -324,7 +443,20 @@
           <v-img
             :src="`https://science.abmi.ca/results/reports/2020/images/${blob.taxonid}/${blob.id}/map2s.png`"
             alt="Detection map"
+            lazy-src="/logo-loading.png"
             contain>
+            <template v-slot:placeholder>
+              <v-row
+                class="fill-height ma-0"
+                align="center"
+                justify="center"
+              >
+                <v-progress-circular
+                  indeterminate
+                  color="primary"
+                ></v-progress-circular>
+              </v-row>
+            </template>
           </v-img>
       </div>
     </div>
