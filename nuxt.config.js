@@ -1,12 +1,26 @@
 import colors from 'vuetify/es5/util/colors'
+import axios from 'axios'
 
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
 
+  generate: {
+    routes: function () {
+      return axios.get(`https://science.abmi.ca/results/reports/2020/images/index.json`)
+      .then((response) => {
+        return response.data.species.map((species) => {
+          return {
+            route: '/' + species.taxonid + '/' + species.id + '/'
+          }
+        })
+      })
+    }     
+  },
+
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    titleTemplate: '%s - SC/dev',
+    titleTemplate: '%s - SC dev',
     title: 'ABMI SC dev',
     meta: [
       { charset: 'utf-8' },
