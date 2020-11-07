@@ -149,6 +149,68 @@
       </div>
     </div>
 
+    <div v-if="blob.sectornorth">
+      <v-row class="ma-4">
+        <v-col>
+          <div class="text-h5" id="sectornorth">Sector effects, north</div>
+        </v-col>
+      </v-row>
+      <v-row class="ma-4">
+        <v-col>
+          <v-img
+            :src="`https://science.abmi.ca/results/reports/2020/images/${blob.taxonid}/${blob.id}/sector-north.png`"
+            alt="Sector effects, north"
+            contain>
+          </v-img>
+        </v-col>
+      </v-row>
+    </div>
+
+    <div v-if="blob.sectorsouth">
+      <v-row class="ma-4">
+        <v-col>
+          <div class="text-h5" id="sectorsouth">Sector effects, south</div>
+        </v-col>
+      </v-row>
+      <v-row class="ma-4">
+        <v-col>
+          <v-img
+            :src="`https://science.abmi.ca/results/reports/2020/images/${blob.taxonid}/${blob.id}/sector-south.png`"
+            alt="Sector effects, south"
+            contain>
+          </v-img>
+        </v-col>
+      </v-row>
+    </div>
+
+    <div v-if="blob.map">
+      <v-row class="ma-4">
+        <v-col>
+          <div class="text-h5" id="det">Predictive map</div>
+        </v-col>
+      </v-row>
+      <v-row class="ma-4">
+        <v-col>
+          <div v-if="blob.taxonid === 'mammals'">
+            This is the <strong>approximate</strong> prediction...
+          </div>
+          <v-img
+            :src="`https://science.abmi.ca/results/reports/2020/images/${blob.taxonid}/${blob.id}/map.png`"
+            alt="Detection map"
+            contain>
+          </v-img>
+        </v-col>
+      </v-row>
+      <div v-if="blob.taxonid === 'mammals'">
+        This is the <strong>exact</strong> prediction...
+          <v-img
+            :src="`https://science.abmi.ca/results/reports/2020/images/${blob.taxonid}/${blob.id}/map2s.png`"
+            alt="Detection map"
+            contain>
+          </v-img>
+      </div>
+    </div>
+
 
 
 
