@@ -328,7 +328,7 @@
                 alt="Land cover associations, south"
                 lazy-src="/logo-loading.png"
                 contain
-                width="50%">
+                width="100%">
                 <template v-slot:placeholder>
                   <v-row
                     class="fill-height ma-0"
@@ -441,7 +441,7 @@
       <div v-if="blob.taxonid === 'mammals'">
         This is the <strong>exact</strong> prediction...
           <v-img
-            :src="`https://science.abmi.ca/results/reports/2020/images/${blob.taxonid}/${blob.id}/map2s.png`"
+            :src="`https://science.abmi.ca/results/reports/2020/images/${blob.taxonid}/${blob.id}/map2.png`"
             alt="Detection map"
             lazy-src="/logo-loading.png"
             contain>
