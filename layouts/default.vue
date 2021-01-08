@@ -99,6 +99,11 @@ export default {
           to: '/vplants/'
         },
         {
+          icon: 'mdi-alert-octagon-outline',
+          title: 'NN plants',
+          to: '/nnplants/'
+        },
+        {
           icon: 'mdi-bug',
           title: 'Mites',
           to: '/mites/'
