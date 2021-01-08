@@ -70,6 +70,7 @@
     <!-- <div v-if="blob.det">  -->
     <v-row>
     <v-col cols="8">
+      <div v-if="blob.det">
 
       <v-row class="ma-4">
         <v-col>
@@ -101,6 +102,7 @@
           </v-img>
         </v-col>
       </v-row>
+      </div>
 
     </v-col>
     <v-col>
