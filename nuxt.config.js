@@ -4,6 +4,7 @@ import axios from 'axios'
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
+//  ssr: true,
 
   generate: {
     routes: function () {
@@ -88,5 +89,10 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
-  }
+  },
+
+  // render: {
+  //   injectScripts: false,
+  //   resourceHints: false
+  // }
 }
